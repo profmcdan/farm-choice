@@ -1,0 +1,80 @@
+# import * from '../src/generated/prisma'
+
+type Query {
+  farm(where: FarmWhereUniqueInput!): Farm
+  farms(
+    where: FarmWhereInput
+    orderBy: FarmOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Farm]!
+  farmer(where: FarmerWhereUniqueInput!): Farmer
+  farmers(
+    where: FarmerWhereInput
+    orderBy: FarmerOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Farmer]!
+  location(where: LocationWhereUniqueInput!): Location
+  locations(
+    where: LocationWhereInput
+    orderBy: LocationOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Location]!
+  product(where: ProductWhereUniqueInput!): Product
+  products(
+    where: ProductWhereInput
+    orderBy: ProductOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Product]!
+  store(where: StoreWhereUniqueInput!): Store
+  stores(
+    where: StoreWhereInput
+    orderBy: StoreOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Store]!
+  user(where: UserWhereUniqueInput!): User
+  users(
+    where: UserWhereInput
+    orderBy: UserOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [User]!
+}
+
+type UserResponse {
+  token: String
+  user: User
+  successful: Boolean!
+}
+
+type Mutation {
+  createFarm(data: FarmCreateInput!): Farm!
+  createFarmer(data: FarmerCreateInput!): Farmer!
+  createLocation(data: LocationCreateInput!): Location!
+  createProduct(data: ProductCreateInput!): Product!
+  createStore(data: StoreCreateInput!): Store!
+  signup(data: UserCreateInput!): UserResponse!
+  login(email: String!, password: String!): UserResponse!
+}
