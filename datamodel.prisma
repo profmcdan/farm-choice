@@ -1,0 +1,55 @@
+type User {
+  id: ID! @id @unique
+  name: String!
+  email: String! @unique
+  password: String!
+  phone: String!
+  image: String!
+}
+
+type Farmer {
+  id: ID! @id @unique
+  title: String!
+  firstName: String!
+  lastName: String!
+  alias: String!
+  phone: String!
+  email: String
+  address: String
+  image: String
+}
+
+type Location {
+  id: ID! @id @unique
+  longitude: Float!
+  latitude: Float!
+  address: String
+}
+
+type Farm {
+  id: ID! @id @unique
+  owner: Farmer @relation(link: INLINE)
+  location: Location
+  size: String
+}
+
+type Store {
+  id: ID! @id @unique
+  name: String!
+}
+
+type Product {
+  id: ID! @id @unique
+  name: String!
+  type: String!
+  quantity: Int!
+  price: Float
+  seller: Farmer @relation(link: INLINE)
+  store: Store @relation(link: INLINE)
+}
+
+enum FARM_SIZE {
+  SMALL
+  MEDIUM
+  LARGE
+}
